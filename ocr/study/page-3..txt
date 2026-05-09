@@ -1,0 +1,13 @@
+SYSTEM SPECIFICATION
+HARDWARE SPECIFICATION
+Processor : Intel Core i3
+RAM >2GB
+Hard Disk > 320 GB
+Clock Speed > 2.1 GHz
+Monitor : Colour Monitor
+Printer : Laser Printer
+Keyboard : Multi Media
+Mouse : Optical Mouse
+SOFTWARE SPECIFICATION
+Front End : PHP
+Back End : My SQL

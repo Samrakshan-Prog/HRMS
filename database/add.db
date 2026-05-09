@@ -1,0 +1,125 @@
+-- Incremental patch for database/muthu.sql
+-- Run this on the current phphr_free database after importing muthu.sql.
+-- This file only uses ALTER/UPDATE statements and does not modify muthu.sql.
+
+-- =========================================================
+-- 1) Enforce one user login per employee
+-- =========================================================
+UPDATE phphr_employees e
+JOIN (
+    SELECT user_id, MIN(id) AS keep_id
+    FROM phphr_employees
+    WHERE user_id IS NOT NULL
+    GROUP BY user_id
+    HAVING COUNT(*) > 1
+) d
+    ON d.user_id = e.user_id
+   AND e.id <> d.keep_id
+SET e.user_id = NULL;
+
+UPDATE phphr_employees e
+LEFT JOIN (
+    SELECT DISTINCT ur.user_id
+    FROM phphr_user_roles ur
+    INNER JOIN phphr_roles r ON r.id = ur.role_id
+    WHERE r.role_key = 'employee'
+) valid_employee_users
+    ON valid_employee_users.user_id = e.user_id
+SET e.user_id = NULL
+WHERE e.user_id IS NOT NULL
+  AND valid_employee_users.user_id IS NULL;
+
+ALTER TABLE phphr_employees
+    ADD UNIQUE KEY uq_employees_user (user_id);
+
+-- =========================================================
+-- 2) Support half-day payroll deduction values
+-- =========================================================
+ALTER TABLE phphr_payroll
+    MODIFY leave_days DECIMAL(5,2) NOT NULL DEFAULT 0.00,
+    ADD KEY idx_payroll_month (salary_month),
+    ADD KEY idx_payroll_employee_month (employee_id, salary_month);
+
+-- =========================================================
+-- 3) Improve leave filtering/report performance
+-- =========================================================
+ALTER TABLE phphr_leaves
+    ADD KEY idx_leaves_status_dates (status, start_date, end_date);
+
+-- =========================================================
+-- 4) Improve loan / repayment workflow reporting
+-- =========================================================
+ALTER TABLE phphr_loans
+    ADD KEY idx_loans_approved_date (approved_date),
+    ADD KEY idx_loans_employee_status (employee_id, status);
+
+ALTER TABLE phphr_loan_repayments
+    ADD KEY idx_repay_loan_status_due (loan_id, payment_status, due_date);
+
+-- =========================================================
+-- 5) Prepare messages for reply threads / read tracking / attachments
+-- =========================================================
+ALTER TABLE phphr_messages
+    ADD COLUMN parent_message_id INT(10) UNSIGNED DEFAULT NULL AFTER receiver_user_id,
+    ADD COLUMN attachment_path VARCHAR(255) DEFAULT NULL AFTER message,
+    ADD COLUMN read_at DATETIME DEFAULT NULL AFTER is_read,
+    ADD KEY idx_messages_context (context_type, context_id),
+    ADD KEY idx_messages_parent (parent_message_id),
+    ADD CONSTRAINT fk_messages_parent
+        FOREIGN KEY (parent_message_id) REFERENCES phphr_messages (id)
+        ON DELETE SET NULL;
+
+UPDATE phphr_messages
+SET read_at = created_at
+WHERE is_read = 1
+  AND read_at IS NULL;
+
+-- =========================================================
+-- 6) Prepare notifications for typed events / safer internal routing
+-- =========================================================
+ALTER TABLE phphr_notifications
+    ADD COLUMN notification_type VARCHAR(50) NOT NULL DEFAULT 'general' AFTER user_id,
+    ADD COLUMN route_key VARCHAR(100) DEFAULT NULL AFTER link,
+    ADD COLUMN read_at DATETIME DEFAULT NULL AFTER is_read,
+    ADD KEY idx_notify_user_created (user_id, created_at),
+    ADD KEY idx_notify_type (notification_type);
+
+UPDATE phphr_notifications
+SET notification_type = CASE
+    WHEN link = 'leaves.php' THEN 'leave'
+    WHEN link = 'loans.php' THEN 'loan'
+    WHEN link LIKE 'repayments.php%' THEN 'repayment'
+    WHEN link = 'messages.php' THEN 'message'
+    WHEN link = 'payroll.php' THEN 'payroll'
+    WHEN link = 'performance.php' THEN 'performance'
+    WHEN link = 'membership.php' THEN 'membership'
+    ELSE 'general'
+END,
+route_key = CASE
+    WHEN link = 'leaves.php' THEN 'leaves.index'
+    WHEN link = 'loans.php' THEN 'loans.index'
+    WHEN link LIKE 'repayments.php%' THEN 'repayments.index'
+    WHEN link = 'messages.php' THEN 'messages.index'
+    WHEN link = 'payroll.php' THEN 'payroll.index'
+    WHEN link = 'performance.php' THEN 'performance.index'
+    WHEN link = 'membership.php' THEN 'membership.index'
+    ELSE NULL
+END,
+read_at = CASE
+    WHEN is_read = 1 AND read_at IS NULL THEN created_at
+    ELSE read_at
+END;
+
+-- =========================================================
+-- 7) Improve performance / membership / report filtering
+-- =========================================================
+ALTER TABLE phphr_attendance
+    ADD KEY idx_attendance_date_status (attendance_date, status);
+
+ALTER TABLE phphr_employee_performance
+    ADD KEY idx_perf_promotion_status (promotion_status),
+    ADD KEY idx_perf_employee_created (employee_id, created_at);
+
+ALTER TABLE phphr_employee_membership
+    ADD KEY idx_membership_status (status),
+    ADD KEY idx_membership_employee_status (employee_id, status);

@@ -1,0 +1,27 @@
+SYSTEM STUDY
+Organization Visited
+Name of the Organization: Sri Chirumurugan Autofinance
+Purpose of the Visit
+The purpose of visiting Sri Thirumurugan Autofinance was to understand the
+existing process of managing employee data, loan applications, and repayment tracking. The
+goal was to analyze the challenges in their manual system and explore how a dynamic. web-
+based solution could streamline their HR and finance operations.
+Discussion with the Organization
+During the visit:
+* Detailed discussions were held with the HR, loan processing, and administrative
+departments.
+~ The staff explained that most operations, such as maintaining employee records. loan
+details. and payment schedules, are handled using registers or spreadsheets.
+- They reported issues with delay in loan approval tracking, repayment management. and
+lack of communication between employees and administrators.
+~ Reports are prepared manually, which consumes a lot of time and often leads to errors.
+Problems in the Existing System
+~ Manual Record-Keeping: Employee and loan data are entered and maintained
+manually.
+~ Decentralized Information: Data is stored across various departments with no central
+access
+yr No Real-Time Monitoring: Loan approval and repayment tracking are delayed
+r Inefficient Communication: bmployces don't receive timely Updates or notifications
+» Poor Data Security: | mployee and financial data are HO protected with proper
+authenuicalion
+y Reporting Issues: Generating reports lor management is slow and tedious

@@ -1,0 +1,49 @@
+: System
+Expectations from the New Sy
+, ‘epayment data.
+» Centralize all emplovec. loan, and repayn
+ats and ; ated notifications.
+>» Provide real-time loan status and automatec ‘e
+athween ses and the finance/HR team.
+> Improve communication between employees ¢
+> Secure sensitive data with login and access control.
+* Enable easy generation of reports related to salary, loans, and atten
+.. . . ¢ : ir loans.
+» Offer a user-friendly interface for employees to apply for and track their loa
+How My Project Solves Their Problem
+The project I am developing, “Dynamic Interaction Web Portal for H uman
+Resource and Employee Credit Repay Process”, directly addresses the issues identified at
+Sri Thirumurugan Autofinance
+Identified Problem Proposed Solution
+ata entry Web-based data input with secure forms
+Data scattereq across d ;
+e
+Partments | Centralized MySQL database for al] modules
+ates PHP. —
+— HP-baseq dynamic terface for live loan and HR status |
+Poor communica —— os
+Cation Built;
+uillt-in COMmmunic : _
+ation module b Wea
+etween employ 3n4
+: ee
+admin Pio’ and
+No security ee ee
+| Login System with authentication and r >I
+!ime-consumin ino - le- based deecess
+& reporting | Auto- jen =
+| 8 erated and ©XPortable teports
+The 5YSlerm Study ay Sri Thi
+‘ Yrumur ‘ =
+the “gan
+ICI Curreny Manual Processeg in hand}; 8 AUtofinance highlighteg the Ij
+Web porta] Will divitals 7 andling SMPloy ee and loan relatea iS lintitations or
+ANCE a Crlical Med Oper, .
+a YACHONS | hous ph.
+ume “OMMUNi cation and reportiy 1 IMproy e *€euracy Save he POpOsey
+| : This svg. seee*S tine. :
+Wansparenc. ; °Y Stem Will oe Nd ticilita
+Pp Y 1n the OTANI Zatigg, Ereatly “Uhaineg ODepar: Kale eal.
+Perational tHe;
+. Clengey ,
+Y and

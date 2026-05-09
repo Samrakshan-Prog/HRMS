@@ -1,0 +1,13 @@
+DATA FLOW DIAGRAM |
+Level 0
+Id, Pwd View |
+<4 Admin Loan
+| Information
+Level 1
+Gets
+7 ; |
+Provides
+| Repayment
+Payment
+) | Generate
+, | | Report

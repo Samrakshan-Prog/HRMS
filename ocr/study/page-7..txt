@@ -1,0 +1,8 @@
+: > Loan Module
+| “+ Loan Application
+** Loan Issue
+> Transaction Module
+| “+ Payment Process
+| ** Receipt Process
+> Employee Communication Module
+|

@@ -1,0 +1,20 @@
+BR
+PROPOSED SYSTEM
+The proposed system is completely design with interactive design mode. Input screens
+are properly designed so it is very casy for the user to work with data fields. They are all in
+the normalized form thereby avoiding data redundancy.
+| The main objective of this project is to reduce the congestion when data transfers
+between source and destination. When data transfers between source and destination there
+may be chances of occurrence of congestion and also it monitor when congestion occurs. If
+so that has to be intimated or warned to the user. The development of this new system
+contains the following activities, which try to automate the entire process keeping in the view
+of database integration approach.
+ADVANTAGES OF PROPOSED SYSTEM
+» Authentication is provided for this application only registered Employee can access |
+> Large volumes of data can be stored with ease
+7 Searching own needs on the web, or contacted directly for loan queries
+~ There is no space better than the Internet to immediately get in touch with an audience
+at an extremely limited cost ,
+~ Loan application will be send and status tracking easily throw this web application
+7 ‘Time saving and secured
+y Proper coordination with administrator and the employee

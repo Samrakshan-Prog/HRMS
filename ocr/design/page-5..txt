@@ -1,0 +1,26 @@
+ENTITY RELATIONSHIP DIAGRAM
+emptype
+at) C empexp
+sity (ada - -
+° aN / ( contno )
+empid \ / ( :
+Kem oe cnlry )
+[admin | ~~ Limployee - - Zion
+| Admin oes Fox na |
+{___——" ~ tame a TO \ emptype
+| name , an
+| C name”) - basicsal ) = = fa
+JS. ee
+| A te Coindat) = Attendance EF topout
+eo
+| View
+ZL >< orchid
+‘ Loan . “Ye
+Oo | \ hank L Cid) | ——
+“SY _~
+Employee C emi) Repay > |
+Loan z H Update > - C tia) | >»
+| Information — <a ( a )) (amt
+Caeno ) an : — Loan |
+netamt _/ Repayment |
+| ( dur)
